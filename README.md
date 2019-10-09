@@ -2,6 +2,10 @@
 
 An app that spins your SVGs.
 
+## Deployment
+
+This app auto deploys via Netlify when `master` updates.
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

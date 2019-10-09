@@ -1,0 +1,14 @@
+.app-panels {
+  display: flex;
+  height: 100%;
+}
+
+.app-panel {
+  flex: 1;
+  padding: $spacing;
+
+  &.app-panel--config {
+    background-color: $black;
+    color: $white1;
+  }
+}
