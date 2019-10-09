@@ -6,18 +6,10 @@ class ConfigPanel extends React.Component {
     super(props);
 
     this.state = {
-      svgMarkup: '',
       spinDirection: 'clockwise',
     };
 
-    this.onSVGMarkupChange = this.onSVGMarkupChange.bind(this);
     this.onSpinDirectionChange = this.onSpinDirectionChange.bind(this);
-  };
-
-  onSVGMarkupChange(event) {
-    this.setState({
-      svgMarkup: event.target.value,
-    });
   };
 
   onSpinDirectionChange(event) {
@@ -37,8 +29,12 @@ class ConfigPanel extends React.Component {
               <textarea
                 className="code-input__text"
                 placeholder="Paste SVG markup here…"
-                onChange={this.onSVGMarkupChange}
+                onChange={this.props.onSVGMarkupChange}
                 value={this.state.svgMarkup}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck="false"
               />
             </div>
           </FormGroup>
