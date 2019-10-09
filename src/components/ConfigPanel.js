@@ -1,97 +1,79 @@
 import React from 'react';
 import FormGroup from './FormGroup';
 
-class ConfigPanel extends React.Component {
-  constructor(props) {
-    super(props);
+function ConfigPanel(props) {
+  return (
+    <div className="config-panel">
+      <form>
+        <FormGroup>
 
-    this.state = {
-      spinDirection: 'clockwise',
-    };
+          {/* TODO replace with CondeInput component */}
+          <div className="code-input">
+            <textarea
+              className="code-input__text"
+              placeholder="Paste SVG markup here…"
+              onChange={props.onSVGMarkupChange}
+              value={props.svgMarkup}
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck="false"
+            />
+          </div>
+        </FormGroup>
 
-    this.onSpinDirectionChange = this.onSpinDirectionChange.bind(this);
-  };
+        <FormGroup label="SVG Width">
+          {/* TODO replace with RangeInput component */}
+          <div className="slider">
+            slider with number input
+          </div>
+        </FormGroup>
 
-  onSpinDirectionChange(event) {
-    this.setState({
-      spinDirection: event.target.id,
-    });
-  }
+        <FormGroup label="Spin Speed">
+          {/* TODO replace with RangeInput component */}
+          <div className="slider">
+            slider with number input
+          </div>
+        </FormGroup>
 
-  render() {
-    return (
-      <div className="config-panel">
-        <form>
-          <FormGroup>
+        <FormGroup label="Spin Direction">
+          {/* TODO replace with StyledRadio component */}
+          <div className="styled-radio">
+            <input
+              type="radio"
+              name="spin-direction"
+              id="clockwise"
+              checked={props.spinDirection === 'clockwise'}
+              onChange={props.onSpinDirectionChange}
+            />
+            <label htmlFor="clockwise">
+              Clockwise
+            </label>
+          </div>
 
-            {/* TODO replace with CondeInput component */}
-            <div className="code-input">
-              <textarea
-                className="code-input__text"
-                placeholder="Paste SVG markup here…"
-                onChange={this.props.onSVGMarkupChange}
-                value={this.state.svgMarkup}
-                autoComplete="off"
-                autoCorrect="off"
-                autoCapitalize="off"
-                spellCheck="false"
-              />
-            </div>
-          </FormGroup>
+          {/* TODO replace with StyledRadio component */}
+          <div className="styled-radio">
+            <input
+              type="radio"
+              name="spin-direction"
+              id="counter-clockwise"
+              checked={props.spinDirection === 'counter-clockwise'}
+              onChange={props.onSpinDirectionChange}
+            />
+            <label htmlFor="counter-clockwise">
+              Counter Clockwise
+            </label>
+          </div>
+        </FormGroup>
 
-          <FormGroup label="SVG Width">
-            {/* TODO replace with RangeInput component */}
-            <div className="slider">
-              slider with number input
-            </div>
-          </FormGroup>
-
-          <FormGroup label="Spin Speed">
-            {/* TODO replace with RangeInput component */}
-            <div className="slider">
-              slider with number input
-            </div>
-          </FormGroup>
-
-          <FormGroup label="Spin Direction">
-            {/* TODO replace with StyledRadio component */}
-            <div className="styled-radio">
-              <input
-                type="radio"
-                name="spin-direction"
-                id="clockwise"
-                checked={this.state.spinDirection === 'clockwise'}
-                onChange={this.onSpinDirectionChange}
-              />
-              <label htmlFor="clockwise">
-                Clockwise
-              </label>
-            </div>
-
-            {/* TODO replace with StyledRadio component */}
-            <div className="styled-radio">
-              <input
-                type="radio"
-                name="spin-direction"
-                id="counter-clockwise"
-                checked={this.state.spinDirection === 'counter-clockwise'}
-                onChange={this.onSpinDirectionChange}
-              />
-              <label htmlFor="counter-clockwise">
-                Counter Clockwise
-              </label>
-            </div>
-          </FormGroup>
-
-          <FormGroup>
-            <button>
-              Generate Code
-            </button>
-          </FormGroup>
-        </form>
-      </div>
-    );
-  };
+        <FormGroup>
+          <button>
+            Generate Code
+          </button>
+        </FormGroup>
+      </form>
+    </div>
+  );
 }
 
 export default ConfigPanel;

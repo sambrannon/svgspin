@@ -8,9 +8,11 @@ class App extends React.Component {
 
     this.state = {
       svgMarkup: '',
+      spinDirection: 'clockwise',
     };
 
     this.onSVGMarkupChange = this.onSVGMarkupChange.bind(this);
+    this.onSpinDirectionChange = this.onSpinDirectionChange.bind(this);
   };
 
   onSVGMarkupChange(event) {
@@ -19,12 +21,23 @@ class App extends React.Component {
     });
   };
 
+  onSpinDirectionChange(event) {
+    this.setState({
+      spinDirection: event.target.id,
+    });
+  }
+
   render() {
     return (
       <div className="app">
         <div className="app-panels">
           <AppPanel type="config">
-            <ConfigPanel onSVGMarkupChange={this.onSVGMarkupChange} />
+            <ConfigPanel
+              onSVGMarkupChange={this.onSVGMarkupChange}
+              svgMarkup={this.state.svgMarkup}
+              onSpinDirectionChange={this.onSpinDirectionChange}
+              spinDirection={this.state.spinDirection}
+            />
           </AppPanel>
           <AppPanel type="preview">
             <div dangerouslySetInnerHTML={{ __html: this.state.svgMarkup }} />
