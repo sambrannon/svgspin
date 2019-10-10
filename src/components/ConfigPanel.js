@@ -65,12 +65,6 @@ function ConfigPanel(props) {
             </label>
           </div>
         </FormGroup>
-
-        <FormGroup>
-          <button>
-            Generate Code
-          </button>
-        </FormGroup>
       </form>
     </div>
   );
