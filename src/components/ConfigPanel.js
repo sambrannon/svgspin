@@ -6,7 +6,6 @@ function ConfigPanel(props) {
     <div className="config-panel">
       <form>
         <FormGroup>
-
           {/* TODO replace with CondeInput component */}
           <div className="code-input">
             <textarea
@@ -25,14 +24,22 @@ function ConfigPanel(props) {
         <FormGroup label="SVG Width">
           {/* TODO replace with RangeInput component */}
           <div className="slider">
-            slider with number input
+            <input
+              type="number"
+              value={props.svgWidthPx}
+              onChange={props.onSvgWidthChange}
+            />
           </div>
         </FormGroup>
 
         <FormGroup label="Spin Speed">
           {/* TODO replace with RangeInput component */}
           <div className="slider">
-            slider with number input
+            <input
+              type="number"
+              value={props.spinSpeedMs}
+              onChange={props.onSpinSpeedChange}
+            />
           </div>
         </FormGroup>
 

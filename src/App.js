@@ -1,6 +1,7 @@
 import React from 'react';
 import AppPanel from './components/AppPanel';
 import ConfigPanel from './components/ConfigPanel';
+import GeneratedCodeBlocks from './components/GeneratedCodeBlocks';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,10 +13,13 @@ class App extends React.Component {
       spinDirection: 'counter-clockwise',
       spinSpeedMs: 2000,
       showGeneratedCode: false,
+      wrapperClass: 'svgspin',
     };
 
     this.onSVGMarkupChange = this.onSVGMarkupChange.bind(this);
     this.onSpinDirectionChange = this.onSpinDirectionChange.bind(this);
+    this.onSpinSpeedChange = this.onSpinSpeedChange.bind(this);
+    this.onSvgWidthChange = this.onSvgWidthChange.bind(this);
   };
 
   onSVGMarkupChange(event) {
@@ -30,15 +34,29 @@ class App extends React.Component {
     });
   }
 
-  cssMarkup() {
+  onSpinSpeedChange(event) {
+    // TODO lock this down to a number
+    this.setState({
+      spinSpeedMs: event.target.value,
+    });
+  }
+
+  onSvgWidthChange(event) {
+    // TODO lock this down to a number
+    this.setState({
+      svgWidthPx: event.target.value,
+    });
+  }
+
+  generatedCssMarkup() {
     return  '@keyframes svgspin {\n' +
             '  from { transform: rotate(0deg); }\n' +
             `  to { transform: rotate(${this.state.spinDirection === 'clockwise' ? '360deg' : '-360deg'}); }\n` +
             '}\n' +
-            '.svgspin {\n' +
+            `.${this.state.wrapperClass} {\n` +
             `  width: ${this.state.svgWidthPx}px;\n` +
             '}\n' +
-            '.svgspin svg {\n' +
+            `.${this.state.wrapperClass} svg {\n` +
             '  display: block;\n' +
             '  width: 100%;\n' +
             '  height: auto;\n' +
@@ -47,6 +65,10 @@ class App extends React.Component {
             '  animation-iteration-count: infinite;\n' +
             '  animation-timing-function: linear;\n' +
             '}\n';
+  }
+
+  generatedSvgMarkup() {
+    return `<div class="${this.state.wrapperClass}">${this.state.svgMarkup}</div>`;
   }
 
   render() {
@@ -59,23 +81,26 @@ class App extends React.Component {
               svgMarkup={this.state.svgMarkup}
               onSpinDirectionChange={this.onSpinDirectionChange}
               spinDirection={this.state.spinDirection}
+              onSpinSpeedChange={this.onSpinSpeedChange}
+              spinSpeedMs={this.state.spinSpeedMs}
+              onSvgWidthChange={this.onSvgWidthChange}
+              svgWidthPx={this.state.svgWidthPx}
             />
             {this.state.svgMarkup !== '' &&
-              <code>
-                <pre>
-                  {this.cssMarkup()}
-                </pre>
-              </code>
+              <GeneratedCodeBlocks
+                css={this.generatedCssMarkup()}
+                html={this.generatedSvgMarkup()}
+              />
             }
           </AppPanel>
           <AppPanel type="preview">
             <style
               type="text/css"
-              dangerouslySetInnerHTML={{ __html: this.cssMarkup() }}
+              dangerouslySetInnerHTML={{ __html: this.generatedCssMarkup() }}
             />
             <div
               dangerouslySetInnerHTML={{ __html: this.state.svgMarkup }}
-              className="svgspin"
+              className={this.state.wrapperClass}
             />
           </AppPanel>
         </div>
