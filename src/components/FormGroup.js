@@ -8,9 +8,7 @@ function FormGroup(props) {
           {props.label}
         </label>
       }
-      <div className="form-group__content">
-        {props.children}
-      </div>
+      {props.children}
     </div>
   );
 }
