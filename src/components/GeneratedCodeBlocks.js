@@ -9,7 +9,7 @@ function GeneratedCodeBlocks(props) {
           className="code-input__text"
           value={props.html}
           spellCheck="false"
-          readonly
+          readOnly
         />
       </div>
       <div className="code-input">
@@ -17,7 +17,7 @@ function GeneratedCodeBlocks(props) {
           className="code-input__text"
           value={props.css}
           spellCheck="false"
-          readonly
+          readOnly
         />
       </div>
     </div>

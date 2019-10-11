@@ -1,4 +1,5 @@
 import React from 'react';
+import Slider from 'rc-slider';
 import FormGroup from './FormGroup';
 
 function ConfigPanel(props) {
@@ -22,8 +23,14 @@ function ConfigPanel(props) {
         </FormGroup>
 
         <FormGroup label="SVG Width">
-          {/* TODO replace with RangeInput component */}
           <div className="slider">
+            <Slider
+              min={0}
+              max={2000}
+              step={10}
+              value={props.svgWidthPx}
+              onChange={props.onSvgWidthSliderChange}
+            />
             <input
               type="number"
               value={props.svgWidthPx}
@@ -35,6 +42,13 @@ function ConfigPanel(props) {
         <FormGroup label="Spin Speed">
           {/* TODO replace with RangeInput component */}
           <div className="slider">
+            <Slider
+              min={0}
+              max={10000}
+              step={100}
+              value={props.spinSpeedMs}
+              onChange={props.onSpinSpeedSliderChange}
+            />
             <input
               type="number"
               value={props.spinSpeedMs}
