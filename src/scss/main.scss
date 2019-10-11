@@ -1,8 +1,8 @@
-// Vendor
-@import '../../node_modules/rc-slider/dist/rc-slider.css';
-
 // Setup
 @import 'variables';
+
+// Mixins
+@import 'mixins/input-reset';
 
 // Global
 @import 'global';
@@ -11,4 +11,5 @@
 @import 'app';
 @import 'app-panel';
 @import 'code-input';
+@import 'slider-input';
 @import 'styled-radio';
