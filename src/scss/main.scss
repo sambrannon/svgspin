@@ -1,9 +1,15 @@
+// Setup
 @import 'variables';
 
+// Mixins
+@import 'mixins/input-reset';
+
+// Global
 @import 'global';
 
 // Components
 @import 'app';
 @import 'app-panel';
 @import 'code-input';
+@import 'slider-input';
 @import 'styled-radio';

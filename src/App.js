@@ -20,6 +20,8 @@ class App extends React.Component {
     this.onSpinDirectionChange = this.onSpinDirectionChange.bind(this);
     this.onSpinSpeedChange = this.onSpinSpeedChange.bind(this);
     this.onSvgWidthChange = this.onSvgWidthChange.bind(this);
+    this.onSvgWidthSliderChange = this.onSvgWidthSliderChange.bind(this);
+    this.onSpinSpeedSliderChange = this.onSpinSpeedSliderChange.bind(this);
   };
 
   onSVGMarkupChange(event) {
@@ -45,6 +47,18 @@ class App extends React.Component {
     // TODO lock this down to a number
     this.setState({
       svgWidthPx: event.target.value,
+    });
+  }
+
+  onSvgWidthSliderChange(value) {
+    this.setState({
+      svgWidthPx: value,
+    });
+  }
+
+  onSpinSpeedSliderChange(value) {
+    this.setState({
+      spinSpeedMs: value,
     });
   }
 
@@ -85,6 +99,8 @@ class App extends React.Component {
               spinSpeedMs={this.state.spinSpeedMs}
               onSvgWidthChange={this.onSvgWidthChange}
               svgWidthPx={this.state.svgWidthPx}
+              onSvgWidthSliderChange={this.onSvgWidthSliderChange}
+              onSpinSpeedSliderChange={this.onSpinSpeedSliderChange}
             />
             {this.state.svgMarkup !== '' &&
               <GeneratedCodeBlocks
