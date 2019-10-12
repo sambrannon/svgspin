@@ -1,5 +1,6 @@
 import React from 'react';
 import FormGroup from './FormGroup';
+import RangeInput from './RangeInput';
 
 function ConfigPanel(props) {
   return (
@@ -21,26 +22,22 @@ function ConfigPanel(props) {
           </div>
         </FormGroup>
 
-        <FormGroup label="SVG Width">
-          {/* TODO replace with RangeInput component */}
-          <div className="slider">
-            <input
-              type="number"
-              value={props.svgWidthPx}
-              onChange={props.onSvgWidthChange}
-            />
-          </div>
+        <FormGroup label="SVG Width">          
+          <RangeInput             
+            value={props.svgWidthPx}
+            onChange={props.onSvgWidthChange}
+            min="0"
+            max="1000"
+          />
         </FormGroup>
 
-        <FormGroup label="Spin Speed">
-          {/* TODO replace with RangeInput component */}
-          <div className="slider">
-            <input
-              type="number"
-              value={props.spinSpeedMs}
-              onChange={props.onSpinSpeedChange}
-            />
-          </div>
+        <FormGroup label="Spin Speed">          
+          <RangeInput             
+            value={props.spinSpeedMs}
+            onChange={props.onSpinSpeedChange}
+            min="0"
+            max="4000"
+          />
         </FormGroup>
 
         <FormGroup label="Spin Direction">

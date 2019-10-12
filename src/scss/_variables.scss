@@ -8,3 +8,12 @@ $white1: #ABB2BF;
 $spacing: 3rem;
 
 $app-font-family: 'Fira Code', monospace;
+
+@mixin text-field {
+    background-color: $black2;
+    color: $white;    
+    border-radius: 0.4rem;
+    font-size: 1.4rem;
+    font-family: $app-font-family;
+    border: solid 0.1rem #282C34;
+}

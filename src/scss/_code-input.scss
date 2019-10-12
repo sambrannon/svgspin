@@ -3,16 +3,11 @@
 }
 
 .code-input__text {
+  @include text-field;
   display: block;
   width: 100%;
-  background-color: $black2;
-  color: $white;
-  padding: 2rem;
-  border-radius: 0.4rem;
-  border: solid 0.1rem #282C34;
   resize: vertical;
-  font-size: 1.4rem;
-  font-family: $app-font-family;
   outline: none;
   min-height: 20rem;
+  padding: 2rem;
 }
