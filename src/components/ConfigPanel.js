@@ -1,4 +1,5 @@
 import React from 'react';
+import Slider from 'rc-slider';
 import FormGroup from './FormGroup';
 import RangeInput from './RangeInput';
 
