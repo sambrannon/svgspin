@@ -103,24 +103,34 @@ class App extends React.Component {
         />
         <div className="app-panels">
           <AppPanel type="config" color="dark">
-            <ConfigPanel
-              onSVGMarkupChange={this.onSVGMarkupChange}
-              svgMarkup={this.state.svgMarkup}
-              onSpinDirectionChange={this.onSpinDirectionChange}
-              spinDirection={this.state.spinDirection}
-              onSpinSpeedChange={this.onSpinSpeedChange}
-              spinSpeedMs={this.state.spinSpeedMs}
-              onSvgWidthChange={this.onSvgWidthChange}
-              svgWidthPx={this.state.svgWidthPx}
-              onSvgWidthSliderChange={this.onSvgWidthSliderChange}
-              onSpinSpeedSliderChange={this.onSpinSpeedSliderChange}
-            />
-            {this.state.svgMarkup !== '' &&
-              <GeneratedCodeBlocks
-                css={this.generatedCssMarkup()}
-                html={this.generatedSvgMarkup()}
-              />
-            }
+            <div className="config-panel">
+              <div className="config-panel__main">
+                <div className="config-panel__form">
+                  <ConfigPanel
+                    onSVGMarkupChange={this.onSVGMarkupChange}
+                    svgMarkup={this.state.svgMarkup}
+                    onSpinDirectionChange={this.onSpinDirectionChange}
+                    spinDirection={this.state.spinDirection}
+                    onSpinSpeedChange={this.onSpinSpeedChange}
+                    spinSpeedMs={this.state.spinSpeedMs}
+                    onSvgWidthChange={this.onSvgWidthChange}
+                    svgWidthPx={this.state.svgWidthPx}
+                    onSvgWidthSliderChange={this.onSvgWidthSliderChange}
+                    onSpinSpeedSliderChange={this.onSpinSpeedSliderChange}
+                  />
+                </div>
+                {this.state.svgMarkup !== '' &&
+                  <GeneratedCodeBlocks
+                    css={this.generatedCssMarkup()}
+                    html={this.generatedSvgMarkup()}
+                  />
+                }
+              </div>
+              <div className="config-panel__footer">
+                <p>Made by Nice people in Minnesota</p>
+                <a href="https://github.com/sambrannon/svgspin" target="_blank">Github</a>
+              </div>
+            </div>
           </AppPanel>
           <AppPanel type="preview" color={this.state.showDarkPreviewBG ? 'dark' : 'light'}>
             <div className="preview-panel">
