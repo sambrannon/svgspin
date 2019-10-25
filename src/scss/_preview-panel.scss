@@ -1,0 +1,21 @@
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.preview-panel__svg {
+  position: relative;
+  flex-grow: 1;
+
+  .svgspin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.preview-panel__color-toggle {
+
+}
