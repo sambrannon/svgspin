@@ -1,7 +1,7 @@
 import React from 'react';
-import Slider from 'rc-slider';
 import FormGroup from './FormGroup';
 import RangeInput from './RangeInput';
+import UploadInput from './UploadInput';
 
 function ConfigPanel(props) {
   return (
@@ -9,6 +9,7 @@ function ConfigPanel(props) {
       <form>
         <FormGroup>
           {/* TODO replace with CondeInput component */}
+          <UploadInput onChange={props.onSVGMarkupChange} />
           <div className="code-input">
             <textarea
               className="code-input__text"
