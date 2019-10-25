@@ -1,6 +1,7 @@
 import React from 'react';
 import Slider from 'rc-slider';
 import FormGroup from './FormGroup';
+import StyledRadio from './StyledRadio';
 
 function ConfigPanel(props) {
   return (
@@ -62,33 +63,22 @@ function ConfigPanel(props) {
         </FormGroup>
 
         <FormGroup label="Spin Direction">
-          {/* TODO replace with StyledRadio component */}
-          <div className="styled-radio">
-            <input
-              type="radio"
-              name="spin-direction"
-              id="clockwise"
-              checked={props.spinDirection === 'clockwise'}
-              onChange={props.onSpinDirectionChange}
-            />
-            <label htmlFor="clockwise">
-              Clockwise
-            </label>
-          </div>
-
-          {/* TODO replace with StyledRadio component */}
-          <div className="styled-radio">
-            <input
-              type="radio"
-              name="spin-direction"
-              id="counter-clockwise"
-              checked={props.spinDirection === 'counter-clockwise'}
-              onChange={props.onSpinDirectionChange}
-            />
-            <label htmlFor="counter-clockwise">
-              Counter Clockwise
-            </label>
-          </div>
+          <StyledRadio
+            type="radio"
+            name="spin-direction"
+            id="clockwise"
+            checked={props.spinDirection === 'clockwise'}
+            onChange={props.onSpinDirectionChange}
+            label="Clockwise"
+          />
+          <StyledRadio
+            type="radio"
+            name="spin-direction"
+            id="counter-clockwise"
+            checked={props.spinDirection === 'counter-clockwise'}
+            onChange={props.onSpinDirectionChange}
+            label="Counter Clockwise"
+          />
         </FormGroup>
       </form>
     </div>
