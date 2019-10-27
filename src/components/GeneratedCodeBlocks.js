@@ -1,5 +1,6 @@
 import React from 'react';
 import FormGroup from './FormGroup';
+import CodeInput from './CodeInput';
 
 function GeneratedCodeBlocks(props) {
   return (
@@ -9,25 +10,10 @@ function GeneratedCodeBlocks(props) {
       </h3>
       <div className="generated-code-blocks__code">
         <FormGroup label="HTML Code">
-          {/* TODO replace with CodeInput component */}
-          <div className="code-input">
-            <textarea
-              className="code-input__text"
-              value={props.html}
-              spellCheck="false"
-              readOnly
-            />
-          </div>
+          <CodeInput value={props.html} />
         </FormGroup>
         <FormGroup label="CSS Code">
-          <div className="code-input">
-            <textarea
-              className="code-input__text"
-              value={props.css}
-              spellCheck="false"
-              readOnly
-            />
-          </div>
+          <CodeInput value={props.css} />
         </FormGroup>
       </div>
     </div>

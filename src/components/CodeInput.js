@@ -6,6 +6,13 @@ function CodeInput(props) {
       <textarea
         className="code-input__text"
         placeholder={props.placeholder}
+        onChange={props.onChange}
+        value={props.value}
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck="false"
+        readOnly={!props.onChange}
       />
     </div>
   );
