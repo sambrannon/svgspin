@@ -8,13 +8,19 @@ import UploadInput from './UploadInput';
 function ConfigPanel(props) {
   return (
     <form>
-      <FormGroup label="SVG Code">
+      <FormGroup label="Upload an SVG...">
+        <UploadInput
+          id="svg-file-input"
+          label="Upload SVG"
+          onChange={props.onSVGMarkupChange}
+        />
+      </FormGroup>
+      <FormGroup label="... or paste SVG code">
         <CodeInput
           placeholder="Paste SVG markup here…"
           onChange={props.onSVGMarkupChange}
           value={props.svgMarkup}
         />
-        <UploadInput onChange={props.onSVGMarkupChange} />
       </FormGroup>
       <FormGroup label="SVG Width (px)">
         <SliderInput
