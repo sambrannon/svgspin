@@ -1,0 +1,20 @@
+.styled-checkbox {
+  @include styled-radio-checkbox-base;
+
+  label {
+    &::before {
+      background-color: $white;
+      border: solid 0.1rem $white1;
+      border-radius: 0.4rem;
+    }
+  }
+
+  input {
+    &:checked + label::before {
+      background-image: url('../static/checkmark.svg');
+      background-size: 11px 9px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}

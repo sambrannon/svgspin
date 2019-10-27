@@ -1,78 +1,60 @@
 import React from 'react';
 import FormGroup from './FormGroup';
-import RangeInput from './RangeInput';
+import StyledRadio from './StyledRadio';
+import CodeInput from './CodeInput';
+import SliderInput from './SliderInput';
 import UploadInput from './UploadInput';
 
 function ConfigPanel(props) {
   return (
-    <div className="config-panel">
-      <form>
-        <FormGroup>
-          {/* TODO replace with CondeInput component */}
-          <UploadInput onChange={props.onSVGMarkupChange} />
-          <div className="code-input">
-            <textarea
-              className="code-input__text"
-              placeholder="Paste SVG markup here…"
-              onChange={props.onSVGMarkupChange}
-              value={props.svgMarkup}
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-              spellCheck="false"
-            />
-          </div>
-        </FormGroup>
-
-        <FormGroup label="SVG Width">          
-          <RangeInput             
-            value={props.svgWidthPx}
-            onChange={props.onSvgWidthChange}
-            min="0"
-            max="1000"
-          />
-        </FormGroup>
-
-        <FormGroup label="Spin Speed">          
-          <RangeInput             
-            value={props.spinSpeedMs}
-            onChange={props.onSpinSpeedChange}
-            min="0"
-            max="4000"
-          />
-        </FormGroup>
-
-        <FormGroup label="Spin Direction">
-          {/* TODO replace with StyledRadio component */}
-          <div className="styled-radio">
-            <input
-              type="radio"
-              name="spin-direction"
-              id="clockwise"
-              checked={props.spinDirection === 'clockwise'}
-              onChange={props.onSpinDirectionChange}
-            />
-            <label htmlFor="clockwise">
-              Clockwise
-            </label>
-          </div>
-
-          {/* TODO replace with StyledRadio component */}
-          <div className="styled-radio">
-            <input
-              type="radio"
-              name="spin-direction"
-              id="counter-clockwise"
-              checked={props.spinDirection === 'counter-clockwise'}
-              onChange={props.onSpinDirectionChange}
-            />
-            <label htmlFor="counter-clockwise">
-              Counter Clockwise
-            </label>
-          </div>
-        </FormGroup>
-      </form>
-    </div>
+    <form>
+      <FormGroup label="SVG Code">
+        <CodeInput
+          placeholder="Paste SVG markup here…"
+          onChange={props.onSVGMarkupChange}
+          value={props.svgMarkup}
+        />
+        <UploadInput onChange={props.onSVGMarkupChange} />
+      </FormGroup>
+      <FormGroup label="SVG Width (px)">
+        <SliderInput
+          min={0}
+          max={2000}
+          step={10}
+          value={props.svgWidthPx}
+          onSliderChange={props.onSvgWidthSliderChange}
+          onInputChange={props.onSvgWidthChange}
+        />
+      </FormGroup>
+      <FormGroup label="Spin Duration (ms)">
+        <SliderInput
+          min={0}
+          max={10000}
+          step={100}
+          value={props.spinSpeedMs}
+          onSliderChange={props.onSpinSpeedSliderChange}
+          onInputChange={props.onSpinSpeedChange}
+        />
+      </FormGroup>
+      <FormGroup label="Spin Direction">
+        <StyledRadio
+          type="radio"
+          name="spin-direction"
+          id="clockwise"
+          checked={props.spinDirection === 'clockwise'}
+          onChange={props.onSpinDirectionChange}
+          label="Clockwise"
+        />
+        <StyledRadio
+          type="radio"
+          name="spin-direction"
+          id="counter-clockwise"
+          checked={props.spinDirection === 'counter-clockwise'}
+          onChange={props.onSpinDirectionChange}
+          label="Counter Clockwise"
+        />
+      </FormGroup>
+    </form>
   );
 }
 
