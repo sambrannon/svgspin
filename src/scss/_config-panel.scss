@@ -1,0 +1,20 @@
+.config-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.config-panel__main {
+  flex-grow: 1;
+}
+
+.config-panel__footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  margin-top: 6rem;
+
+  p {
+    margin: 0;
+  }
+}

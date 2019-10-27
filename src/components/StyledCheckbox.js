@@ -1,11 +1,10 @@
 import React from 'react';
 
-function StyledRadio(props) {
+function StyledCheckbox(props) {
   return (
-    <div className="styled-radio">
+    <div className="styled-checkbox">
       <input
-        type="radio"
-        name={props.name}
+        type="checkbox"
         id={props.id}
         checked={props.checked}
         onChange={props.onChange}
@@ -17,4 +16,4 @@ function StyledRadio(props) {
   );
 }
 
-export default StyledRadio;
+export default StyledCheckbox;

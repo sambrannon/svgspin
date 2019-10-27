@@ -1,51 +1,104 @@
-$slider-handle-size: 2.2rem;
+$thumb-size: 20px;
+$thumb-color: $white;
+$thumb-focus-shadow: 0 0 8px $blue;
+$track-height: 4px;
+$track-color: $blue;
+
+@mixin thumb {
+  -webkit-appearance: none;
+  box-shadow: 1px 1px 1px $black2, 0px 0px 1px $black2;
+  border: 1px solid $white1;
+  height: $thumb-size;
+  width: $thumb-size;
+  border-radius: 50%;
+  background: $thumb-color;
+  cursor: pointer;
+  margin-top: -(($thumb-size - $track-height) / 2);
+  transition: transform 100ms;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin track {
+  width: 100%;
+  height: $track-height;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px $black2, 0px 0px 1px $black2;
+  background: $blue;
+  border-radius: 1.2px;
+}
+
 
 .slider-input {
   display: flex;
   align-items: center;
-}
 
-.slider-input__bar {
-  position: relative;
-  height: $slider-handle-size;
-  width: 100%;
-  touch-action: none;
-
-  // these are class names from the rc-slider lib
-  // we nedd the extra specificity here in order to actually style things
-  .rc-slider-rail,
-  .rc-slider-track {
-    position: absolute;
+  input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+    margin: 18px 3rem 18px 0;
     width: 100%;
-    height: 0.4rem;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 0.2rem;
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+
+    &::-moz-range-track {
+      @include track;
+    }
+
+    &::-webkit-slider-thumb {
+      @include thumb;
+    }
+
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+
+    // TODO: Test in IE/Edge
+
+    &::-ms-track {
+      @include track;
+      background: transparent;
+      border-color: transparent;
+      border-width: ($thumb-size / 2) 0;
+      color: transparent;
+    }
+
+    &::-ms-thumb {
+      @include thumb;
+      margin-top: $track-height / 4;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::-webkit-slider-runnable-track {
+        background-color: $blue;
+      }
+
+      &::-webkit-slider-thumb {
+        box-shadow: $thumb-focus-shadow;
+      }
+
+      &::-moz-range-thumb {
+        box-shadow: $thumb-focus-shadow;
+      }
+
+      &::-ms-thumb {
+        box-shadow: $thumb-focus-shadow;
+      }
+    }
   }
 
-  .rc-slider-rail {
-    background-color: $white2;
+  .slider-input__number {
+    @include input-reset;
+    width: 10rem;
   }
 
-  .rc-slider-track {
-    background-color: $blue;
-  }
-
-  .rc-slider-handle {
-    display: block;
-    width: $slider-handle-size;
-    height: $slider-handle-size;
-    border-radius: 50%;
-    position: absolute;
-    background-color: $white;
-    outline: none;
-    cursor: ew-resize;
-  }
-}
-
-.slider-input__number {
-  @include input-reset;
-  margin-left: 4rem;
-  flex-shrink: 0;
-  width: 10rem;
 }

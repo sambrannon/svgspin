@@ -3,11 +3,9 @@
 }
 
 .code-input__text {
-  @include text-field;
+  @include input-reset;
   display: block;
   width: 100%;
   resize: vertical;
-  outline: none;
   min-height: 20rem;
-  padding: 2rem;
 }

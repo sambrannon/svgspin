@@ -3,6 +3,7 @@
 
 // Mixins
 @import 'mixins/input-reset';
+@import 'mixins/styled-radio-checkbox-base';
 
 // Global
 @import 'global';
@@ -11,7 +12,10 @@
 @import 'app';
 @import 'app-panel';
 @import 'code-input';
-@import 'range-input';
+@import 'config-panel';
 @import 'form-group';
+@import 'generated-code-blocks';
+@import 'preview-panel';
 @import 'slider-input';
+@import 'styled-checkbox';
 @import 'styled-radio';
