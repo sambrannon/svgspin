@@ -18,56 +18,19 @@ class App extends React.Component {
       showDarkPreviewBG: false,
     };
 
-    this.onSVGMarkupChange = this.onSVGMarkupChange.bind(this);
-    this.onSpinDirectionChange = this.onSpinDirectionChange.bind(this);
-    this.onSpinSpeedChange = this.onSpinSpeedChange.bind(this);
-    this.onSvgWidthChange = this.onSvgWidthChange.bind(this);
-    this.onSvgWidthSliderChange = this.onSvgWidthSliderChange.bind(this);
-    this.onSpinSpeedSliderChange = this.onSpinSpeedSliderChange.bind(this);
-    this.onTogglePreviewBackgroundColor = this.onTogglePreviewBackgroundColor.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.onToggleStateBool = this.onToggleStateBool.bind(this);
   };
 
-  onSVGMarkupChange(event) {
+  onInputChange(stateKey, stateValue) {
     this.setState({
-      svgMarkup: event.target.value,
-    });
-  };
-
-  onSpinDirectionChange(event) {
-    this.setState({
-      spinDirection: event.target.id,
+      [stateKey]: stateValue,
     });
   }
 
-  onSpinSpeedChange(event) {
-    // TODO lock this down to a number
+  onToggleStateBool(stateKey) {
     this.setState({
-      spinSpeedMs: event.target.value,
-    });
-  }
-
-  onSvgWidthChange(event) {
-    // TODO lock this down to a number
-    this.setState({
-      svgWidthPx: event.target.value,
-    });
-  }
-
-  onSvgWidthSliderChange(value) {
-    this.setState({
-      svgWidthPx: value,
-    });
-  }
-
-  onSpinSpeedSliderChange(value) {
-    this.setState({
-      spinSpeedMs: value,
-    });
-  }
-
-  onTogglePreviewBackgroundColor(value) {
-    this.setState({
-      showDarkPreviewBG: !this.state.showDarkPreviewBG,
+      [stateKey]: !this.state[stateKey],
     });
   }
 
@@ -107,16 +70,16 @@ class App extends React.Component {
               <div className="config-panel__main">
                 <div className="config-panel__form">
                   <ConfigPanel
-                    onSVGMarkupChange={this.onSVGMarkupChange}
                     svgMarkup={this.state.svgMarkup}
-                    onSpinDirectionChange={this.onSpinDirectionChange}
                     spinDirection={this.state.spinDirection}
-                    onSpinSpeedChange={this.onSpinSpeedChange}
                     spinSpeedMs={this.state.spinSpeedMs}
-                    onSvgWidthChange={this.onSvgWidthChange}
                     svgWidthPx={this.state.svgWidthPx}
-                    onSvgWidthSliderChange={this.onSvgWidthSliderChange}
-                    onSpinSpeedSliderChange={this.onSpinSpeedSliderChange}
+                    onSVGMarkupChange={event => this.onInputChange('svgMarkup', event.target.value)}
+                    onSpinDirectionChange={event => this.onInputChange('spinDirection', event.target.id)}
+                    onSpinSpeedChange={event => this.onInputChange('spinSpeedMs', event.target.value)}
+                    onSvgWidthChange={event => this.onInputChange('svgWidthPx', event.target.value)}
+                    onSvgWidthSliderChange={value => this.onInputChange('svgWidthPx', value)}
+                    onSpinSpeedSliderChange={value => this.onInputChange('spinSpeedMs', value)}
                   />
                 </div>
                 {this.state.svgMarkup !== '' &&
@@ -128,7 +91,13 @@ class App extends React.Component {
               </div>
               <div className="config-panel__footer">
                 <p>Made by Nice people in Minnesota</p>
-                <a href="https://github.com/sambrannon/svgspin" target="_blank">Github</a>
+                <a
+                  href="https://github.com/sambrannon/svgspin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Github
+                </a>
               </div>
             </div>
           </AppPanel>
@@ -145,7 +114,7 @@ class App extends React.Component {
                   <StyledCheckbox
                     id="bg-toggle"
                     checked={this.state.showDarkPreviewBG}
-                    onChange={this.onTogglePreviewBackgroundColor}
+                    onChange={() => this.onToggleStateBool('showDarkPreviewBG')}
                     label="Dark Background"
                   />
                 </div>
