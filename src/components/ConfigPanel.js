@@ -3,11 +3,19 @@ import FormGroup from './FormGroup';
 import StyledRadio from './StyledRadio';
 import CodeInput from './CodeInput';
 import SliderInput from './SliderInput';
+import UploadInput from './UploadInput';
 
 function ConfigPanel(props) {
   return (
     <form>
-      <FormGroup label="SVG Code">
+      <FormGroup label="Upload an SVG...">
+        <UploadInput
+          id="svg-file-input"
+          label="Upload SVG"
+          onChange={props.onSVGMarkupChange}
+        />
+      </FormGroup>
+      <FormGroup label="... or paste SVG code">
         <CodeInput
           placeholder="Paste SVG markup here…"
           onChange={props.onSVGMarkupChange}

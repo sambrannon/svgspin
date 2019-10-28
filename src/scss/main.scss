@@ -2,6 +2,7 @@
 @import 'variables';
 
 // Mixins
+@import 'mixins/button';
 @import 'mixins/input-reset';
 @import 'mixins/styled-radio-checkbox-base';
 
@@ -19,3 +20,4 @@
 @import 'slider-input';
 @import 'styled-checkbox';
 @import 'styled-radio';
+@import 'upload-input.scss';
