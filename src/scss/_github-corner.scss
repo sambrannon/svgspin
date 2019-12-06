@@ -15,11 +15,19 @@
 
 .github-corner__background {
   fill: $black;
+
+  .github-corner--dark & {
+    fill: $white;
+  }
 }
 
 .github-corner__arm,
 .github-corner__body {
   fill: $white;
+
+  .github-corner--dark & {
+    fill: $black;
+  }
 }
 
 .github-corner__arm {

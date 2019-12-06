@@ -117,7 +117,10 @@ class App extends React.Component {
             </div>
           </AppPanel>
         </div>
-        <GithubCorner url={GITHUB_URL} />
+        <GithubCorner
+          url={GITHUB_URL}
+          useDarkTheme={this.state.showDarkPreviewBG}
+        />
       </div>
     );
   }

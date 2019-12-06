@@ -1,10 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 
 function GithubBanner(props) {
+  const classes = classNames('github-corner', {
+    'github-corner--dark': props.useDarkTheme,
+  });
+
   return (
     <a
       href={props.url}
-      className="github-corner"
+      className={classes}
       title="View source on Github"
       aria-label="View source on GitHub"
       target="_blank"
