@@ -3,6 +3,8 @@ import AppPanel from './components/AppPanel';
 import ConfigPanel from './components/ConfigPanel';
 import GeneratedCodeBlocks from './components/GeneratedCodeBlocks';
 import StyledCheckbox from './components/StyledCheckbox';
+import GithubCorner from './components/GithubCorner';
+import { GITHUB_URL } from './constants';
 
 class App extends React.Component {
   constructor(props) {
@@ -91,13 +93,6 @@ class App extends React.Component {
               </div>
               <div className="config-panel__footer">
                 <p>Made by Nice people in Minnesota</p>
-                <a
-                  href="https://github.com/sambrannon/svgspin"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Github
-                </a>
               </div>
             </div>
           </AppPanel>
@@ -122,6 +117,7 @@ class App extends React.Component {
             </div>
           </AppPanel>
         </div>
+        <GithubCorner url={GITHUB_URL} />
       </div>
     );
   }

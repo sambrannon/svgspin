@@ -19,7 +19,7 @@ const UploadInput = props => {
         className="upload-input__input"
         id={props.id}
       />
-      <label for={props.id} className="upload-input__label">
+      <label htmlFor={props.id} className="upload-input__label">
         {props.label}
       </label>
     </div>
