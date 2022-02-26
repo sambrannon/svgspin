@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+:root {
+  --black: #21252B;
+  --black2: #282C34;
+  --black3:  #676B75;
+  --blue: #6696FF;
+  --white: #FFFFFF;
+  --white1: #ABB2BF;
+  --white2: #636D83;
+  --spacing: 3rem;
+  --app-font-family: 'Fira Code', monospace;
+  --checkable-size: 1.8rem;
+}
+
+/* -----------------------------------------------------
+  GLOBALS
+----------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6em;
+}
+
+html,
+body {
+  font-family: var(--app-font-family);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--white2);
+}
+
+/* -----------------------------------------------------
+  input-reset
+----------------------------------------------------- */
+.code-input__text,
+.number-input {
+  background-color: var(--black2);
+  color: var(--white1);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: solid 0.1rem var(--black2);
+  font-size: 1.6rem;
+  font-family: var(--app-font-family);
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .code-input__text,
+  .number-input {
+    font-size: 1.4rem;
+  }
+}
+
+/* -----------------------------------------------------
+  app
+----------------------------------------------------- */
+.app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* -----------------------------------------------------
+  app-panel
+----------------------------------------------------- */
+.app-panels {
+  display: flex;
+  height: 100%;
+}
+
+.app-panel {
+  flex: 0 0 50%;
+  padding: var(--spacing);
+  overflow-y: auto;
+  transition: background-color 0.2s ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .app-panel {
+    padding: calc(var(--spacing) * 2);
+  }
+}
+
+.app-panel.app-panel--preview {
+  overflow: hidden;
+  border-left: solid 0.1rem var(--black2);
+  background-color: var(--white);
+  color: var(--white1);
+}
+
+.app-panel.app-panel--config,
+.app-panel.app-panel--dark {
+  background-color: var(--black);
+  color: var(--white1);
+}
+
+/* -----------------------------------------------------
+  code-input
+----------------------------------------------------- */
+.code-input {
+  width: 100%;
+}
+
+.code-input__text {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  min-height: 16rem;
+}
+
+/* -----------------------------------------------------
+  config-panel
+----------------------------------------------------- */
+.config-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.config-panel__main {
+  flex-grow: 1;
+}
+
+.config-panel__footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  margin-top: 6rem;
+}
+
+.config-panel__footer p {
+  margin: 0;
+}
+
+/* -----------------------------------------------------
+  form-group
+----------------------------------------------------- */
+.form-group + .form-group {
+  margin-top: 3rem;
+}
+
+.form-group__label {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* -----------------------------------------------------
+  generated-code-blocks
+----------------------------------------------------- */
+.generated-code-blocks {
+  margin-top: 6rem;
+}
+
+.generated-code-blocks__title {
+  margin: 0 0 3rem;
+}
+
+.generated-code-blocks__code {
+  display: flex;
+  justify-content: space-between;
+}
+
+.generated-code-blocks__code .form-group {
+  width: 48%;
+  margin-top: 0;
+}
+
+/* -----------------------------------------------------
+  github-corner
+----------------------------------------------------- */
+.github-corner {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8rem;
+  height: 8rem;
+}
+
+.github-corner__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.github-corner__background {
+  fill: var(--black);
+}
+
+.github-corner--dark .github-corner__background {
+  fill: var(--white);
+}
+
+.github-corner__arm,
+.github-corner__body {
+  fill: var(--white);
+}
+
+.github-corner--dark .github-corner__arm,
+.github-corner--dark .github-corner__body {
+  fill: var(--black);
+}
+
+
+.github-corner__arm {
+  transform-origin: 130px 106px;
+}
+
+@media (max-width: 500px) {
+  .github-corner__arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
+
+.github-corner:hover .github-corner__arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .github-corner__arm {
+    animation: none;
+  }
+}
+
+@keyframes octocat-wave {
+  0%   { transform: rotate(0deg) }
+  20%  { transform: rotate(-25deg) }
+  40%  { transform: rotate(10deg) }
+  60%  { transform: rotate(-25deg) }
+  80%  { transform: rotate(10deg) }
+  100% { transform: rotate(0deg) }
+}
+
+/* -----------------------------------------------------
+  preview-panel
+----------------------------------------------------- */
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.preview-panel__svg {
+  position: relative;
+  flex-grow: 1;
+}
+
+.preview-panel__svg .svgspin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* -----------------------------------------------------
+  number-input
+----------------------------------------------------- */
+.number-input {
+  width: 20rem;
+}
+
+/* -----------------------------------------------------
+  styled-checkbox-radio-base
+----------------------------------------------------- */
+.styled-radio,
+.styled-checkbox {
+  display: inline-block;
+  margin-right: 4rem;
+}
+
+.styled-radio label,
+.styled-checkbox label {
+  display: flex;
+  cursor: pointer;
+}
+
+.styled-radio label::before,
+.styled-checkbox label::before {
+  content: '';
+  display: block;
+  width: var(--checkable-size);
+  height: var(--checkable-size);
+  margin-right: 1rem;
+  box-sizing: border-box;
+}
+
+.styled-radio input,
+.styled-checkbox input {
+  width: var(--checkable-size);
+  height: var(--checkable-size);
+  position: absolute;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* -----------------------------------------------------
+  styled-checkbox
+----------------------------------------------------- */
+.styled-checkbox label::before {
+  background-color: var(--white);
+  border: solid 0.1rem var(--white1);
+  border-radius: 0.4rem;
+}
+
+.styled-checkbox input:checked + label::before {
+  background-image: url('./checkmark.svg');
+  background-size: 11px 9px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* -----------------------------------------------------
+  styled-radio
+----------------------------------------------------- */
+.styled-radio label::before {
+  border-radius: 50%;
+  background-color: var(--black3);
+}
+
+.styled-radio input:checked + label::before {
+  background-color: var(--white);
+  box-shadow: inset 0 0 0 0.6rem var(--blue);
+}

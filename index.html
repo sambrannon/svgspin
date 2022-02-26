@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#21252B" />
+    <meta name="description" content="An app that spins your SVGs 🤷🏻‍♂️" />
+    <title>SVGspin</title>
+    <link href="./app.css" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-29777882-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-29777882-4');
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div class="app">
+      <div class="app-panels">
+        <!-- these will need light and dark override classes (though that should just be top level?) -->
+        <div class="app-panel app-panel--config">
+          <div class="config-panel">
+            <div class="config-panel__main">
+              <div class="config-panel__form">
+                <form id="config-form">
+                  <div class="form-group">
+                    <label class="form-group__label" for="code-input">
+                      Paste SVG code
+                    </label>
+                    <div class="code-input">
+                      <textarea
+                        class="code-input__text"
+                        placeholder={props.placeholder}
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        id="code-input"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-group__label" for="svg-width-input">
+                      SVG Width (px)
+                    </label>
+                    <input
+                      class="number-input"
+                      type="number"
+                      id="svg-width-input"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-group__label" for="svg-spin-duration">
+                      SVG Spin Duration (ms)
+                    </label>
+                    <input
+                      class="number-input"
+                      type="number"
+                      id="svg-spin-duration"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-group__label">
+                      Spin Direction
+                    </label>
+                    <div class="styled-radio">
+                      <input
+                        type="radio"
+                        name="spin-direction"
+                        id="spin-direction-clockwise"
+                      />
+                      <label for="spin-direction-clockwise">
+                        Clockwise
+                      </label>
+                    </div>
+                    <div class="styled-radio">
+                      <input
+                        type="radio"
+                        name="spin-direction"
+                        id="spin-direction-counter-clockwise"
+                      />
+                      <label for="spin-direction-counter-clockwise">
+                        Counter Clockwise
+                      </label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="generated-code-blocks">
+                <h3 class="generated-code-blocks__title">
+                  Your Generated Code:
+                </h3>
+                <div class="generated-code-blocks__code">
+                  <div class="form-group">
+                    <label class="form-group__label" for="generated-code-html">
+                      HTML
+                    </label>
+                    <div class="code-input">
+                      <textarea
+                        class="code-input__text"
+                        placeholder="HTML Code..."
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        id="generated-code-html"
+                        readonly
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-group__label" for="generated-code-css">
+                      CSS
+                    </label>
+                    <div class="code-input">
+                      <textarea
+                        class="code-input__text"
+                        placeholder="CSS Code..."
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                        id="generated-code-css"
+                        readonly
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="config-panel__footer">
+              <p>Made by Nice people in Minnesota</p>
+            </div>
+          </div>
+        </div>
+        <div class="app-panel app-panel--preview" id="preview-panel">
+          <div class="preview-panel">
+            <div class="preview-panel__svg">
+
+              <!-- PREVIEW SVG CONTAINER -->
+              <div id="preview-container"></div>
+
+            </div>
+            <div class="preview-panel__color-toggle">
+              <div class="styled-checkbox">
+                <input
+                  type="checkbox"
+                  id="bg-toggle"
+                />
+                <label for="bg-toggle">
+                  Dark Background
+                </label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="github-corner">
+        <a
+          href="https://github.com/sambrannon/svgspin"
+          class="github-corner"
+          title="View source on Github"
+          aria-label="View source on GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="github-corner__svg" width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
+            <path class="github-corner__background" d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
+            <path class="github-corner__arm" d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" />
+            <path class="github-corner__body" d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
